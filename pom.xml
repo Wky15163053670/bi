@@ -172,7 +172,6 @@
       <version>${mybatis-generator.version}</version>
     </dependency>
 
-
   </dependencies>
 
   <build>
@@ -198,6 +197,7 @@
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
+      
     </plugins>
     <pluginManagement>
       <plugins>
@@ -209,7 +209,8 @@
         </plugin>
       </plugins>
     </pluginManagement>
-
+	
+	
     <resources>
       <resource>
         <directory>src/main/resources</directory>

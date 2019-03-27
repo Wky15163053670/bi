@@ -14,7 +14,6 @@ import com.bi.service.UserService;
 @RequestMapping("")
 public class UserController {
 
-	
 	@Autowired
 	UserService userService;
 	
@@ -33,6 +32,17 @@ public class UserController {
 		return mav;
 		
 	}
+	
+	@RequestMapping("login")
+    public ModelAndView login() {
+        ModelAndView mav = new ModelAndView();
+        	
+		mav.setViewName("/login/Login");
+
+        
+        return mav;
+    }  
+	
 	
 	
 }

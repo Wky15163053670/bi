@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.bi.mapper.CategoryMapper;
 import com.bi.mapper.UserMapper;
-import com.bi.pojo.Category;
 import com.bi.pojo.User;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -21,19 +19,6 @@ public class MybatisTest {
 
 	@Autowired
 	private UserMapper userMapper;
-
-//	@Autowired
-//	private CategoryMapper categoryMapper;
-
-//	@Test
-//	public void testList() {
-//		List<Category> cs = categoryMapper.list();
-//		System.out.println(cs.getClass());
-//		for (Category c : cs) {
-//			System.out.println(c.getId());
-//		}
-//
-//	}
 
 	
 	 @Test 

@@ -30,7 +30,6 @@ public class UserController {
 		mav.setViewName("userList");
 		//返回ModelAndView参数
 		return mav;
-		
 	}
 	
 	@RequestMapping("login")
@@ -39,7 +38,6 @@ public class UserController {
         	
 		mav.setViewName("/login/Login");
 
-        
         return mav;
     }  
 	

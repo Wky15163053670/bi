@@ -117,7 +117,7 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- pageHelper -->
+    <!-- pageHelper MyBatis分页技术 -->
     <dependency>
       <groupId>com.github.pagehelper</groupId>
       <artifactId>pagehelper</artifactId>

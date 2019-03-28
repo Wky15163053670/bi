@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.bi.mapper.LoginMapper;
 import com.bi.mapper.UserMapper;
 import com.bi.pojo.User;
+import com.bi.pojo.login.Login;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -19,15 +21,17 @@ public class MybatisTest {
 
 	@Autowired
 	private UserMapper userMapper;
-
+	
+	@Autowired
+	private LoginMapper loginMapper;
+	
 	
 	 @Test 
 	 public void testLists() {
-		List<User> ul = userMapper.list();
-		for(User u : ul) {
-			System.out.println(u.toString());
-		}
 		 
+		Login login = loginMapper.selectUserId("root");
+		 
+		System.out.println(login.toString());
 	 }
 	 
 }

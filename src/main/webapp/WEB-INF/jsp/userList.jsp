@@ -21,7 +21,7 @@
 		        <tr>
 		            <td>${user.id}</td>
 		            <td>${user.user_name}</td>
-		            <td>${user.password}</td>
+		            <td>${user.mobile}</td>
 		            <td>${user.age}</td>
 		        </tr>
 			</c:forEach>

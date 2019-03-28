@@ -42,14 +42,13 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="typeAliasesPackage" value="com.bi.pojo" />
 		<property name="dataSource" ref="dataSource"/>
-		<property name="mapperLocations" value="classpath:com/bi/mapper/*.xml"/>
+		<property name="mapperLocations" value="classpath:com/bi/mapper/xml/*.xml"/>
 		<property name="plugins">
 		    <array>
 		      <bean class="com.github.pagehelper.PageInterceptor">
 		        <property name="properties">
 		          <!--使用下面的方式配置参数，一行配置一个 -->
-		          <value>
-		          </value>
+		          <value> params=value1 </value>
 		        </property>
 		      </bean>
 		    </array>
@@ -60,6 +59,4 @@
 		<property name="basePackage" value="com.bi.mapper"/>
 	</bean>
 	
-
-
 </beans>

@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bi.pojo.User;
 import com.bi.service.UserService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @Controller
 @RequestMapping("")
@@ -23,6 +25,9 @@ public class UserController {
 		//新建一个ModelAndView对象，为其传入参数
 		ModelAndView mav = new ModelAndView();
 		//从service层获取数据当道List<User>中
+//		PageHelper.startPage(1, 10);
+//		List<User> pageInfo = userService.list();
+//		PageInfo<User> userList = new PageInfo<User>(pageInfo);
 		List<User> userList = userService.list();
 		//放入参数
 		mav.addObject(userList);
@@ -32,14 +37,12 @@ public class UserController {
 		return mav;
 	}
 	
-	@RequestMapping("login")
-    public ModelAndView login() {
-        ModelAndView mav = new ModelAndView();
-        	
-		mav.setViewName("/login/Login");
-
-        return mav;
-    }  
+//	@RequestMapping("login")
+//    public ModelAndView login() {
+//        ModelAndView mav = new ModelAndView();
+//		  mav.setViewName("/login/Login");
+//        return mav;
+//    }  
 	
 	
 	

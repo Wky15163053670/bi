@@ -3,6 +3,7 @@ package com.bi.util;
 public class Page {
 
 	int start=0;
+	//默认每页显示数据
 	int count = 5;
 	int last = 0;
 	public int getStart() {

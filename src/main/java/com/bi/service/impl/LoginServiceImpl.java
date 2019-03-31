@@ -12,7 +12,9 @@ public class LoginServiceImpl {
 	LoginMapper loginMapper;
 	
 	public Login selectUserId(String user_id) {
-		// TODO Auto-generated method stub
+		
+		
+		
 		return loginMapper.selectUserId(user_id);
 	}
 	

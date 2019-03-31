@@ -18,7 +18,7 @@
 <body>
 	<div class="container">
         <div class="form row">
-			<form action="submitLogin">
+			<form action="submitLogin" method="post">
 				<div class="form-horizontal col-md-offset-3" id="login_form">
 					<h3 class="form-title">LOGIN</h3>
 					<div class="col-md-9">

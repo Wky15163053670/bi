@@ -14,11 +14,6 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public int selectUserId(Login request_login, String ip) {
-		
-		System.out.println(loginMapper.selectUserId(request_login.getUser_id()).getPassword());
-		System.out.println(request_login.getPassword());
-		System.out.println(loginMapper.selectUserId(request_login.getUser_id()).getPassword().equals(request_login.getPassword()));
-		
 		if(loginMapper.selectUserId(request_login.getUser_id()) != null) {
 			if(loginMapper.selectUserId(request_login.getUser_id()).getPassword().equals(request_login.getPassword())) {
 				return 1;  //登录成功

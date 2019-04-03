@@ -40,18 +40,17 @@ public class login {
 		//获取IP地址哦
 		String ip = new GetIp().getIp(request);
 		int return_result = loginService.selectUserId(request_login, ip);
-		System.out.println(return_result);
 		if(return_result == 3) {
 			//判断该账号不存在
-			if(return_result == 2){
-				//判断该账号密码错误
-				if(return_result == 1) {
-					//判断密码是否正确
-					return "redirect:/listUser";
-				}
-				else return "/login/Login";
-			}
-			else return "/login/Login";
+			return "/login/Login";
+		}
+		else if(return_result == 2){
+			//判断该账号密码错误
+			return "/login/Login";
+		}
+		else if(return_result == 1) {
+			//判断密码是否正确
+			return "redirect:/listUser";
 		}
 		else return "/login/Login";
 	}

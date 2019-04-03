@@ -5,17 +5,27 @@ import org.springframework.stereotype.Service;
 
 import com.bi.mapper.LoginMapper;
 import com.bi.pojo.login.Login;
-@Service
-public class LoginServiceImpl {
-
-	@Autowired
-	LoginMapper loginMapper;
+import com.bi.service.LoginService;
+@Service("LoginServiceImpl")
+public class LoginServiceImpl implements LoginService {
 	
-	public Login selectUserId(String user_id) {
+	@Autowired
+	private LoginMapper loginMapper;
+
+	@Override
+	public int selectUserId(Login request_login, String ip) {
 		
+		System.out.println(loginMapper.selectUserId(request_login.getUser_id()).getPassword());
+		System.out.println(request_login.getPassword());
+		System.out.println(loginMapper.selectUserId(request_login.getUser_id()).getPassword().equals(request_login.getPassword()));
 		
-		
-		return loginMapper.selectUserId(user_id);
+		if(loginMapper.selectUserId(request_login.getUser_id()) != null) {
+			if(loginMapper.selectUserId(request_login.getUser_id()).getPassword().equals(request_login.getPassword())) {
+				return 1;  //登录成功
+			}
+			else return 2;  //密码错误
+		}
+		else return 3;   //该账号不存在
 	}
 	
 }

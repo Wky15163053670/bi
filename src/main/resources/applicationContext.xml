@@ -12,7 +12,8 @@
      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
      http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-   <context:annotation-config />
+	<!-- 自动搜索bean（pojo文件夹下的类） -->
+	<context:annotation-config />
 	<context:component-scan base-package="com.bi.service" />
 
 	<!-- 引入数据库配置文件 -->
@@ -38,7 +39,7 @@
 		<property name="maxWait" value="${maxWait}"></property>
 	</bean>
 	
-	
+	 <!-- mybatis核心bean -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="typeAliasesPackage" value="com.bi.pojo" />
 		<property name="dataSource" ref="dataSource"/>
@@ -54,9 +55,12 @@
 		    </array>
 		  </property>		
 	</bean>
-
+	
+	<!-- 自动搜索mapper接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.bi.mapper"/>
 	</bean>
+	
+	
 	
 </beans>

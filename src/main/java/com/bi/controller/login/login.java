@@ -5,11 +5,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bi.mapper.LoginMapper;
 import com.bi.pojo.login.Login;
+import com.bi.service.LoginService;
 import com.bi.service.UserService;
+import com.bi.service.impl.LoginServiceImpl;
 import com.bi.util.GetIp;
 
 @Controller
@@ -18,15 +21,11 @@ public class login {
 
 	@Autowired
 	UserService userService;
-
-	
 	@Autowired
-	private LoginMapper loginMapper;
-	
-	
+	LoginService loginService;
 	
 	//跳转login
-	@RequestMapping("login")
+	@RequestMapping(value="login")
 	public ModelAndView login() {
 		ModelAndView mav = new ModelAndView();
 		//controller跳转jsp
@@ -35,21 +34,25 @@ public class login {
 	}
 	
 	//由jsp返回controller层数据，然后进行判断是否登录
-	@RequestMapping("/submitLogin")
-	public String submitLogin(Login login,HttpServletRequest request) {
+	@RequestMapping(value="/submitLogin",method=RequestMethod.POST)
+	public String submitLogin(Login request_login,HttpServletRequest request) {
 		
 		//获取IP地址哦
 		String ip = new GetIp().getIp(request);
-		System.out.println(ip);
-		//controller跳转controller
-		Login loginService = loginMapper.selectUserId(login.getUser_id());
-		
-		if(login.getUser_id().equals(loginService.getUser_id())) {
-			if(login.getPassword().equals(loginService.getPassword())) {
-				return "redirect:/listUser";
+		int return_result = loginService.selectUserId(request_login, ip);
+		System.out.println(return_result);
+		if(return_result == 3) {
+			//判断该账号不存在
+			if(return_result == 2){
+				//判断该账号密码错误
+				if(return_result == 1) {
+					//判断密码是否正确
+					return "redirect:/listUser";
+				}
+				else return "/login/Login";
 			}
-			return "/login/Login";
+			else return "/login/Login";
 		}
-		return "/login/Login";
+		else return "/login/Login";
 	}
 }

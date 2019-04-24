@@ -2,6 +2,8 @@ package com.bi.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +24,7 @@ public class UserController {
 	
 	//为该对象设置路径
 	@RequestMapping("listUser")
-	public ModelAndView listUser(Page page) {
+	public ModelAndView listUser(Page page,HttpSession session) {
 		//新建一个ModelAndView对象，为其传入参数
 		ModelAndView mav = new ModelAndView();
 		//创建分页对象
@@ -34,6 +36,7 @@ public class UserController {
 		int total= (int) new PageInfo<>(userList).getTotal();
 		page.caculateLast(total);
 		//放入参数
+		mav.addObject("user_action", session.getAttribute("user"));
 		mav.addObject("userList",userList);
 		//将该数据要显示的jsp文件路径
 		mav.setViewName("userList");

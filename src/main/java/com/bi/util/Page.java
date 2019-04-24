@@ -1,5 +1,10 @@
 package com.bi.util;
 
+/*
+ * @author    : 王开宇
+ * @time	  : 2019-04-01
+ * @function  :   根据数据库反馈获取数据条数，从而得到分页
+ * */
 public class Page {
 
 	int start=0;

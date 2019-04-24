@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div> 尊敬的${user_action.user_id}，您好，欢迎观临寒舍 </div>
 	<div style="width: 500px;">
 		<table align='center' border='1' cellspacing='0'>
 			<tr>
